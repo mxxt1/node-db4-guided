@@ -30,10 +30,6 @@ exports.up = function(knex) {
 
     .createTable('animal_zoos', tbl => {
         tbl.increments();
-  
-        tbl.string('name', 255).notNullable();
-
-        tbl.string('address', 255).notNullable();
 
         tbl.integer('zoo_id')
         .unsigned()
@@ -46,7 +42,7 @@ exports.up = function(knex) {
         .unsigned()
         .references('id')
         .inTable('animal')
-        .onDelete('RESTRICT') //what should happen when the primary key is deleted | other values: 'CASCADE','RESTRICT', 'NO ACTION', 'SET NULL'
+        .onDelete('RESTRICT')
         .onUpdate('CASCADE');
 
         tbl.date('to').notNullable();
